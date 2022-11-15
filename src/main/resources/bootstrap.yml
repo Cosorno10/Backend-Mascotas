@@ -1,0 +1,56 @@
+#jdbc.driverClassName=com.mysql.jdbc.Driver
+#jdbc.url=jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_dad68ecddd28957
+#jdbc.username=b836d9d3793cb6
+#jdbc.password=b46346a5
+
+#Application Configuration
+server:
+  port: 8094
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# To See H2 Console in Browser:
+# http://localhost:8091/h2-console
+# Enabling H2 Console
+spring:
+  application:
+    name: customer-service
+  h2:
+    console:
+      enabled: true
+  # ===============================
+  # DB
+  # ===============================
+  datasource:
+    url: jdbc:mysql://localhost/petmascota
+    driverClassName: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    username: root
+    password:
+
+  # ===============================
+  # JPA / HIBERNATE
+  # ===============================
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://magnobydemand.com:8099/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
